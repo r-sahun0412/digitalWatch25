@@ -17,9 +17,9 @@ const DigitalClock = () => {
   // Formats the date as DD:MM:YYYY
   const showDate =
     getCurrentDate.getDate().toString().padStart(2, "0") + // Day with leading zero
-    ":" +
+    "/" +
     (getCurrentDate.getMonth() + 1).toString().padStart(2, "0") + // Month with leading zero
-    ":" +
+    "/" +
     getCurrentDate.getFullYear(); // Full year
 
   // Formats the time as HH:MM:SS
