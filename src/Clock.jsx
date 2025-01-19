@@ -1,6 +1,5 @@
-// Importing necessary tools from React
-import React, { useState, useEffect } from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useState, useEffect } from "react"; 
+import { Grid2, Typography} from "@mui/material";
 
 const DigitalClock = () => {
   // Step 1: Create a state variable to hold the current date and time
@@ -15,7 +14,7 @@ const DigitalClock = () => {
     return () => clearInterval(timer); // Cleanup the timer when the component is unmounted
   }, []);
 
-  // Step 3: Format the date as DD:MM:YYYY
+  // Formats the date as DD:MM:YYYY
   const showDate =
     getCurrentDate.getDate().toString().padStart(2, "0") + // Day with leading zero
     ":" +
@@ -23,7 +22,7 @@ const DigitalClock = () => {
     ":" +
     getCurrentDate.getFullYear(); // Full year
 
-  // Step 4: Format the time as HH:MM:SS
+  // Formats the time as HH:MM:SS
   const showTime =
     getCurrentDate.getHours().toString().padStart(2, "0") +
     ":" +
@@ -31,31 +30,31 @@ const DigitalClock = () => {
     ":" +
     getCurrentDate.getSeconds().toString().padStart(2, "0");
 
-  // Step 5: Render the clock
   return (
-    <Box
+    <Grid2
+      container
+      justifyContent="center"
+      alignItems="center"
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        backgroundColor: "#000", // Black background for alarm clock look
-        textAlign: "center",
+        height: "100vh", 
+        backgroundColor: "#000", 
         padding: "20px",
       }}
     >
-      {/* Outer frame to simulate alarm clock casing */}
-      <Box
+      <Grid2
+        item
+        xs={12} sm={10} md={8} lg={6} // Responsive breakpoints
         sx={{
-          backgroundColor: "#222", // Dark grey for the clock body
-          borderRadius: "20px", // Rounded corners for the clock body
+          backgroundColor: "#222", 
+          borderRadius: "20px",
           padding: "30px",
-          border: "5px solid #00FFFF", // Neon cyan border
-          boxShadow: "0px 0px 40px 10px #00FFFF", // Glow effect for the outer casing
+          border: "5px solid #00FFFF", 
+          boxShadow: "0px 0px 40px 10px #00FFFF", 
+          textAlign: "center", // Center content inside
+          maxWidth: "90%", // Prevent overflowing content
+          overflow: "hidden", // Ensure no overflow
         }}
       >
-        
         <Typography
           variant="h4"
           sx={{
@@ -69,7 +68,6 @@ const DigitalClock = () => {
           Digital Clock
         </Typography>
 
-       
         <Typography
           variant="h5"
           sx={{
@@ -82,7 +80,6 @@ const DigitalClock = () => {
           {showDate}
         </Typography>
 
-        
         <Typography
           variant="h2"
           sx={{
@@ -91,14 +88,16 @@ const DigitalClock = () => {
             color: "#00FFFF", 
             letterSpacing: "5px",
             textShadow: "0 0 2px #00FFFF, 0 0 2px #00FFFF, 0 0 3px #00FFFF", 
+            fontSize: { xs: "2rem", sm: "5rem", md: "6rem" }, // Responsive text size
+            maxWidth: "100%", // Ensure the time fits inside the box
+            whiteSpace: "nowrap", // Prevent wrapping on smaller screens
           }}
         >
           {showTime}
         </Typography>
-      </Box>
-    </Box>
+      </Grid2>
+    </Grid2>
   );
 };
 
-// Step 6: Make this component available for use in other parts of the app
 export default DigitalClock;
